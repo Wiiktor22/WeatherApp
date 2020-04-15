@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled, { createGlobalStyle } from 'styled-components';
+import Wrapper from './components/Wrapper';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const GlobalStyle = createGlobalStyle`
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
+    }
+`;
+
+const App = () => {
+    const date = new Date();
+    
+    return (
+        <> 
+            <GlobalStyle />
+            <Wrapper>
+                <h1>Siema!</h1>
+            </Wrapper>
+        </>
+    );
 }
-
+ 
 export default App;
