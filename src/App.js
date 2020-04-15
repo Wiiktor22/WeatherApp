@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Wrapper from './components/Wrapper';
+import Header from './components/header/Header';
+import Main from './components/views/main/Main';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -22,7 +24,8 @@ const App = () => {
         <> 
             <GlobalStyle />
             <Wrapper>
-                <h1>Siema!</h1>
+                <Header />
+                <Main />
             </Wrapper>
         </>
     );
