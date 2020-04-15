@@ -6,7 +6,6 @@ import TodayPanel from './../../elements/todayPanel/todayPanel';
 
 const Wrapper = styled.div`
     width: 100%;
-    margin: 2vh 0;
 `;
 
 const TodaySection = styled.div`
@@ -15,8 +14,8 @@ const TodaySection = styled.div`
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 20vh;
-    border: 1px solid black;
+    height: auto;
+    padding-bottom: 2vh;
 `;
 
 const Main = () => {
@@ -37,7 +36,7 @@ const Main = () => {
     return ( 
         <Wrapper>
             <TodaySection>
-                {data && <TodayPanel icon={data.currently.icon}/>}
+                {data && <TodayPanel icon={data.currently.icon} temp={data.currently.temperature} aTemp={data.currently.apparentTemperature}/>}
             </TodaySection>
         </Wrapper>
     );

@@ -1,12 +1,15 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { getIcon, defineDay, defineMonth } from '../functions';
+import Location from './../../elements/todayPanel/location/location';
+import SunSet from '../sunSet/sunSet';
 
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin: 1vh 0;
 `;
 
 const FirstLine = styled.div`
@@ -39,7 +42,17 @@ const Text = styled.p`
     )}
 `;
 
-const TodayPanel = ({ icon }) => {
+const Temperature = styled.p`
+    font-size: 5rem;
+    font-weight: 500;
+`;
+
+const TextWrapper = styled.div`
+    display: flex;
+    margin : 1vh 0;
+`;
+
+const TodayPanel = ({ icon, temp, aTemp }) => {
     const date = new window.Date();
     const day = date.getDay();
     const month = date.getMonth();
@@ -52,6 +65,12 @@ const TodayPanel = ({ icon }) => {
                     <Text>{defineDay(day)}, {date.getDate()} {defineMonth(month)}</Text>
                 </Date>
             </FirstLine>
+            <Temperature>{Math.round(temp)}°</Temperature>
+            <Location />
+            <TextWrapper>
+                <Text>Odczuwalna: {Math.round(aTemp)}°</Text>
+                <SunSet />
+            </TextWrapper>
         </Wrapper>
     );
 }
