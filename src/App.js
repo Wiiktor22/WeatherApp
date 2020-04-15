@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import Wrapper from './components/Wrapper';
 import Header from './components/header/Header';
 import Main from './components/views/main/Main';
+import GeoLocationContextProvider from './context/GeoLocationContext';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -18,14 +19,14 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => {
-    const date = new Date();
-    
     return (
         <> 
             <GlobalStyle />
             <Wrapper>
                 <Header />
-                <Main />
+                <GeoLocationContextProvider>
+                    <Main />
+                </GeoLocationContextProvider>
             </Wrapper>
         </>
     );
