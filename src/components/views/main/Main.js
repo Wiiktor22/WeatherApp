@@ -6,6 +6,8 @@ import TodayPanel from './../../elements/todayPanel/todayPanel';
 import ReferenceSection from '../../MainViewComponents/referenceSection/referenceSection';
 import NextHourSection from '../../MainViewComponents/nextHourSection/nextHourSection';
 import CurrentlyDetailSection from '../../MainViewComponents/currentlyDetailsSection/currentlyDetailsSection';
+import Loading from '../loading/Loading';
+import { geolocated } from "react-geolocated";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -21,9 +23,21 @@ const TodaySection = styled.div`
     height: auto;
 `;
 
-const Main = () => {
-    const { lat, long } = useContext(GeoLocationContext)
+const Animation = styled.div`
+    animation: .6s showOn ease-out;
+    @keyframes showOn {
+        from {
+            transform: scale(.7);
+        } to {
+            transform: scale(1);
+        }
+    }
+`;
+
+const Main = (props) => {
+    const { lat, long, getLocation } = useContext(GeoLocationContext)
     const [data, setData] = useState('');
+    const [updateLocation, setUpdateLocation] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -34,7 +48,7 @@ const Main = () => {
             setData(downloadedData);
         }
         fetchData();
-    }, [])
+    }, [lat, long])
 
     const prepareDataForNHS = () => {
         const preparedData = data.hourly.data;
@@ -42,16 +56,36 @@ const Main = () => {
         return preparedData
     }
 
+    //Download current Location
+    const checkForUpdateLocation = () => {
+        console.log("Jestem w funkcji")
+        if (props.coords !== null && !updateLocation) {
+            setUpdateLocation(!updateLocation);
+        }
+    }
+    useEffect(() => {
+        console.log("Efekt")
+        if (updateLocation) getLocation();
+    }, [updateLocation])
+
+
     return ( 
         <Wrapper>
-            <TodaySection>
-                {data && <TodayPanel icon={data.currently.icon} temp={data.currently.temperature} aTemp={data.currently.apparentTemperature}/>}
-            </TodaySection>
-            <ReferenceSection />
-            {data && <NextHourSection data={prepareDataForNHS()}/>}
-            {data && <CurrentlyDetailSection data={data.currently}/>}
+            {checkForUpdateLocation()}
+            {(lat != '0' && data) ? (
+                <Animation>
+                    <TodaySection>
+                        <TodayPanel icon={data.currently.icon} temp={data.currently.temperature} aTemp={data.currently.apparentTemperature}/>
+                    </TodaySection>
+                    <ReferenceSection />
+                    <NextHourSection data={prepareDataForNHS()}/>
+                    <CurrentlyDetailSection data={data.currently}/>
+                </Animation>
+            ) : (
+                <Loading />
+            )}
         </Wrapper>
     );
 }
  
-export default Main;
+export default geolocated()(Main);
