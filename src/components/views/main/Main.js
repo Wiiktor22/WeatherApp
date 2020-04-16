@@ -5,9 +5,11 @@ import { key } from './../../../config/config';
 import TodayPanel from './../../elements/todayPanel/todayPanel';
 import ReferenceSection from '../../MainViewComponents/referenceSection/referenceSection';
 import NextHourSection from '../../MainViewComponents/nextHourSection/nextHourSection';
+import CurrentlyDetailSection from '../../MainViewComponents/currentlyDetailsSection/currentlyDetailsSection';
 
 const Wrapper = styled.div`
     width: 100%;
+    height: max-100vh;
 `;
 
 const TodaySection = styled.div`
@@ -47,6 +49,7 @@ const Main = () => {
             </TodaySection>
             <ReferenceSection />
             {data && <NextHourSection data={prepareDataForNHS()}/>}
+            {data && <CurrentlyDetailSection data={data.currently}/>}
         </Wrapper>
     );
 }
