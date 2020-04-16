@@ -12,13 +12,11 @@ const SunSet = () => {
     const { lat, long } = useContext(GeoLocationContext);
     const date = new window.Date();
     const currentHour = date.getHours();
-    const currentMin = date.getMinutes();
-    
     const [data, setData] = useState('');
 
     useEffect(() => {
         async function fetchData() {
-            const url = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${long}`
+            const url = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${long}&date=today`;
             const response = await fetch(url);
             const data = await response.json();
             setData(data);
@@ -31,49 +29,45 @@ const SunSet = () => {
         const sunRiseHour = data.results.sunrise.slice(0, indexRise);
         const indexSet = data.results.sunset.indexOf(':');
         const sunSetHour = data.results.sunset.slice(0, indexSet);
-        const preparedSunSetHour = (sunsetHour) => {
+        
+        const sunRiseMinute = data.results.sunrise.slice(indexRise + 1, indexRise + 3);
+        const sunSetMinute = data.results.sunset.slice(indexSet + 1, indexSet + 3);
+        
+        const preparedSunSetHour = sunsetHour => {
             switch (sunsetHour) {
-                case 1:
-                    return 13;
-                case 2:
-                    return 14;
-                case 3:
+                case '1':
                     return 15;
-                case 4:
+                case '2':
                     return 16;
-                case 5:
+                case '3':
                     return 17;
-                case 6:
+                case '4':
                     return 18;
-                case 7:
+                case '5':
                     return 19;
-                case 8:
+                case '6':
                     return 20;
-                case 9:
+                case '7':
                     return 21;
-                case 10:
+                case '8':
                     return 22;
-                case 11:
+                case '9':
                     return 23;
+                case '10':
+                    return 24;
+                case '11':
+                    return 1;
                 default: 
                     return 0;
             }
         }
-        console.log(sunRiseHour, preparedSunSetHour(sunSetHour))
-        if (currentHour > sunRiseHour && currentHour < preparedSunSetHour(sunSetHour)) {
-            return 'Zachód: '
+        const preparedSunRiseHour = parseInt(sunRiseHour);
+        const responseSunRise = `Wschód: ${preparedSunRiseHour + 2}:${sunRiseMinute}`;
+        const responseSunSet = `Zachód: ${preparedSunSetHour(sunSetHour)}:${sunSetMinute}`;
+        if (currentHour > (preparedSunRiseHour + 2) && currentHour < preparedSunSetHour(sunSetHour)) {
+            return responseSunSet
         } else {
-            return 'Wschód: '
-        }
-    }
-
-    const defineTime = () => {
-        const sunRiseHour = data.results.sunrise;
-        const sunSetHour = data.results.sunset;
-        if (currentHour > sunRiseHour && currentHour < sunSetHour) {
-            return sunSetHour
-        } else {
-            return sunRiseHour
+            return responseSunRise
         }
     }
 

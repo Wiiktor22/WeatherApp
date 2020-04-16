@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { GeoLocationContext } from '../../../context/GeoLocationContext';
 import { key } from './../../../config/config';
 import TodayPanel from './../../elements/todayPanel/todayPanel';
+import ReferenceSection from '../../MainViewComponents/referenceSection/referenceSection';
+import NextHourSection from '../../MainViewComponents/nextHourSection/nextHourSection';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -15,7 +17,6 @@ const TodaySection = styled.div`
     align-items: center;
     width: 100%;
     height: auto;
-    padding-bottom: 2vh;
 `;
 
 const Main = () => {
@@ -33,11 +34,19 @@ const Main = () => {
         fetchData();
     }, [])
 
+    const prepareDataForNHS = () => {
+        const preparedData = data.hourly.data;
+        preparedData.length = 8;
+        return preparedData
+    }
+
     return ( 
         <Wrapper>
             <TodaySection>
                 {data && <TodayPanel icon={data.currently.icon} temp={data.currently.temperature} aTemp={data.currently.apparentTemperature}/>}
             </TodaySection>
+            <ReferenceSection />
+            {data && <NextHourSection data={prepareDataForNHS()}/>}
         </Wrapper>
     );
 }
