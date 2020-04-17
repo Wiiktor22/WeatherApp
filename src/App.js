@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
         font-size: 10px;
         font-family: 'Montserrat', sans-serif;
     }
+
+    body {
+        background-color: #83baf3;
+    }
 `;
 
 const App = () => {
