@@ -93,3 +93,23 @@ export const defineMonth = month => {
             return 'Błąd'
     }
 }
+
+export const defineWindDirection = direction => {
+    if (direction >= 22 && direction < 67) {
+        return 'NE'
+    } else if (direction >= 67 && direction < 112) {
+        return 'E'
+    } else if (direction >= 112 && direction < 157) {
+        return 'SE'
+    } else if (direction >= 157 && direction < 202) {
+        return 'S'
+    } else if (direction >= 202 && direction < 247) {
+        return 'SW'
+    } else if (direction >= 247 && direction < 292) {
+        return 'W'
+    } else if (direction >= 292 && direction < 337) {
+        return 'NW'
+    } else {
+        return 'N'
+    }
+}

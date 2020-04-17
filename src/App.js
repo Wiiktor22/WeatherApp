@@ -6,6 +6,7 @@ import Main from './components/views/main/Main';
 import GeoLocationContextProvider from './context/GeoLocationContext';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Next from './components/views/next/Next';
+import DataForNextSectionProvider from './context/DataForNextSectionContext';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -27,10 +28,12 @@ const App = () => {
             <Wrapper>
                 <Header />
                 <GeoLocationContextProvider>
-                    <Switch>
-                        <Route exact path='/' component={Main} />
-                        <Route path='/nextweek' component={Next} />
-                    </Switch>
+                    <DataForNextSectionProvider>
+                        <Switch>
+                            <Route exact path='/' component={Main} />
+                            <Route path='/nextweek' component={Next} />
+                        </Switch>
+                    </DataForNextSectionProvider>
                 </GeoLocationContextProvider>
             </Wrapper>
         </BrowserRouter>

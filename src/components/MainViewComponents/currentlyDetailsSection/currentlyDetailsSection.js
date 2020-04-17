@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { defineWindDirection } from './../../elements/functions';
 
 const Wrapper = styled.div`
     display: grid;
@@ -28,25 +29,6 @@ const Text = styled.p`
 `;
 
 const CurrentlyDetailSection = ({ data }) => {
-    const defineWindDirection = direction => {
-        if (direction >= 22 && direction < 67) {
-            return 'NE'
-        } else if (direction >= 67 && direction < 112) {
-            return 'E'
-        } else if (direction >= 112 && direction < 157) {
-            return 'SE'
-        } else if (direction >= 157 && direction < 202) {
-            return 'S'
-        } else if (direction >= 202 && direction < 247) {
-            return 'SW'
-        } else if (direction >= 247 && direction < 292) {
-            return 'W'
-        } else if (direction >= 292 && direction < 337) {
-            return 'NW'
-        } else {
-            return 'N'
-        }
-    }
     return ( 
         <Wrapper>
             <Information>
@@ -71,7 +53,7 @@ const CurrentlyDetailSection = ({ data }) => {
             </Information>
             <Information>
                 <Text>Pokrycie chmur</Text>
-                <Text info>{data.cloudCover * 100}%</Text>
+                <Text info>{Math.round(data.cloudCover * 100)}%</Text>
             </Information>
             <Information>
                 <Text>Widoczność</Text>

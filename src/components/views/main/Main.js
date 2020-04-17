@@ -8,6 +8,7 @@ import NextHourSection from '../../MainViewComponents/nextHourSection/nextHourSe
 import CurrentlyDetailSection from '../../MainViewComponents/currentlyDetailsSection/currentlyDetailsSection';
 import Loading from '../loading/Loading';
 import { geolocated } from "react-geolocated";
+import { DataForNextSectionContext } from '../../../context/DataForNextSectionContext';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -35,7 +36,8 @@ const Animation = styled.div`
 `;
 
 const Main = (props) => {
-    const { lat, long, getLocation } = useContext(GeoLocationContext)
+    const { lat, long, getLocation } = useContext(GeoLocationContext);
+    const { getData } = useContext(DataForNextSectionContext);
     const [data, setData] = useState('');
     const [updateLocation, setUpdateLocation] = useState(false);
 
@@ -49,9 +51,7 @@ const Main = (props) => {
                 setData(downloadedData);
             }
             fetchData();
-            console.log('Fetchuje dane')
         }
-        console.log('Jestem w efekcie niepotrzebnie')
     }, [lat, long, updateLocation])
 
     const prepareDataForNHS = () => {
@@ -62,16 +62,22 @@ const Main = (props) => {
 
     //Download current Location
     const checkForUpdateLocation = () => {
-        console.log("Jestem w funkcji")
         if (props.coords !== null && updateLocation === false) {
-            setUpdateLocation(!updateLocation);
-            console.log("Zmieniam")
+            setUpdateLocation(true);
         }
     }
     useEffect(() => {
-        console.log("Efekt")
         if (updateLocation) getLocation();
     }, [updateLocation])
+
+    //Send data to Context for NextSection
+    useEffect(() => {
+        if (data !== '') {
+            const dataForNextSection = data.daily.data;
+            dataForNextSection.length = 7;
+            getData(dataForNextSection);
+        }
+    }, [data])
 
 
     return ( 

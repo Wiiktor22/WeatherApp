@@ -18,10 +18,10 @@ class GeoLocationContextProvider extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <GeoLocationContext.Provider value={{...this.state, getLocation: this.getCurrentLocation}}>
                 {this.props.children}
+                {console.log(this.state)}
             </GeoLocationContext.Provider>
         )
     }
