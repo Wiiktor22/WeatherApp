@@ -18,8 +18,8 @@ const Information = styled.div`
 const Text = styled.p`
     text-transform: uppercase;
     font-weight: 300;
-    ${({ data}) => (
-        data && css`
+    ${({ info }) => (
+        info && css`
             font-weight: 500;
             text-transform: none;
             font-size: 1.5rem;
@@ -51,35 +51,35 @@ const CurrentlyDetailSection = ({ data }) => {
         <Wrapper>
             <Information>
                 <Text>Wilgotność</Text>
-                <Text data>{data.humidity * 100}%</Text>
+                <Text info>{data.humidity * 100}%</Text>
             </Information>
             <Information>
                 <Text>Ciśnienie</Text>
-                <Text data>{Math.round(data.pressure)} hPa</Text>
+                <Text info>{Math.round(data.pressure)} hPa</Text>
             </Information>
             <Information>
                 <Text>Wiatr</Text>
-                <Text data>{Math.round(data.visibility)} km/h</Text>
+                <Text info>{Math.round(data.visibility)} km/h</Text>
             </Information>
             <Information>
                 <Text>Kierunek wiatru</Text>
-                <Text data>{defineWindDirection(data.windBearing)}</Text>
+                <Text info>{defineWindDirection(data.windBearing)}</Text>
             </Information>
             <Information>
                 <Text>Możliwe opady</Text>
-                <Text data>{data.precipProbability * 100}%</Text>
+                <Text info>{data.precipProbability * 100}%</Text>
             </Information>
             <Information>
                 <Text>Pokrycie chmur</Text>
-                <Text data>{data.cloudCover * 100}%</Text>
+                <Text info>{data.cloudCover * 100}%</Text>
             </Information>
             <Information>
                 <Text>Widoczność</Text>
-                <Text data>{Math.round(data.visibility)} km</Text>
+                <Text info>{Math.round(data.visibility)} km</Text>
             </Information>
             <Information>
                 <Text>indeks uv</Text>
-                <Text data>{Math.round(data.uvIndex)}</Text>
+                <Text info>{Math.round(data.uvIndex)}</Text>
             </Information>
         </Wrapper>
     );

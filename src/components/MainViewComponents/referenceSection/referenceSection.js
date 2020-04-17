@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
     display: flex;
@@ -10,7 +11,7 @@ const Wrapper = styled.div`
     margin: 1vh 0 2vh;
 `;
 
-const SectionLink = styled.a`
+const SectionLink = styled(Link)`
     color: white;
     text-decoration: none;
     font-size: 1.5rem;
@@ -22,8 +23,8 @@ const SectionLink = styled.a`
 const ReferenceSection = () => {
     return ( 
         <Wrapper>
-            <SectionLink>Dziś</SectionLink>
-            <SectionLink>Następne 7 dni</SectionLink>
+            <SectionLink to='/'>Dziś</SectionLink>
+            <SectionLink to='/nextweek'>Następne 7 dni</SectionLink>
         </Wrapper>
     );
 }

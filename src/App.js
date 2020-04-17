@@ -1,9 +1,11 @@
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import Wrapper from './components/Wrapper';
 import Header from './components/header/Header';
 import Main from './components/views/main/Main';
 import GeoLocationContextProvider from './context/GeoLocationContext';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Next from './components/views/next/Next';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -20,15 +22,18 @@ const GlobalStyle = createGlobalStyle`
 
 const App = () => {
     return (
-        <> 
+        <BrowserRouter> 
             <GlobalStyle />
             <Wrapper>
                 <Header />
                 <GeoLocationContextProvider>
-                    <Main />
+                    <Switch>
+                        <Route exact path='/' component={Main} />
+                        <Route path='/nextweek' component={Next} />
+                    </Switch>
                 </GeoLocationContextProvider>
             </Wrapper>
-        </>
+        </BrowserRouter>
     );
 }
  

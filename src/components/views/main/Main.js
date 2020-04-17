@@ -11,7 +11,7 @@ import { geolocated } from "react-geolocated";
 
 const Wrapper = styled.div`
     width: 100%;
-    height: max-100vh;
+    max-height: 100vh;
 `;
 
 const TodaySection = styled.div`
@@ -40,15 +40,19 @@ const Main = (props) => {
     const [updateLocation, setUpdateLocation] = useState(false);
 
     useEffect(() => {
-        async function fetchData() {
-            const proxy = 'https://cors-anywhere.herokuapp.com/';
-            const url = `${proxy}https://api.darksky.net/forecast/${key}/${lat},${long}?lang=pl&units=ca`;
-            const response = await fetch(url);
-            const downloadedData = await response.json();
-            setData(downloadedData);
+        if (lat !== '0') {
+            async function fetchData() {
+                const proxy = 'https://cors-anywhere.herokuapp.com/';
+                const url = `${proxy}https://api.darksky.net/forecast/${key}/${lat},${long}?lang=pl&units=ca`;
+                const response = await fetch(url);
+                const downloadedData = await response.json();
+                setData(downloadedData);
+            }
+            fetchData();
+            console.log('Fetchuje dane')
         }
-        fetchData();
-    }, [lat, long])
+        console.log('Jestem w efekcie niepotrzebnie')
+    }, [lat, long, updateLocation])
 
     const prepareDataForNHS = () => {
         const preparedData = data.hourly.data;
@@ -59,8 +63,9 @@ const Main = (props) => {
     //Download current Location
     const checkForUpdateLocation = () => {
         console.log("Jestem w funkcji")
-        if (props.coords !== null && !updateLocation) {
+        if (props.coords !== null && updateLocation === false) {
             setUpdateLocation(!updateLocation);
+            console.log("Zmieniam")
         }
     }
     useEffect(() => {
@@ -71,8 +76,8 @@ const Main = (props) => {
 
     return ( 
         <Wrapper>
-            {checkForUpdateLocation()}
-            {(lat != '0' && data) ? (
+            {updateLocation === false && checkForUpdateLocation()}
+            {data ? (
                 <Animation>
                     <TodaySection>
                         <TodayPanel icon={data.currently.icon} temp={data.currently.temperature} aTemp={data.currently.apparentTemperature}/>
