@@ -1,0 +1,16 @@
+{
+  "short_name": "Pogoda",
+  "name": "Pogoda dla Twojej lokalizacji!",
+  "icons": [
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#83BAF3",
+  "background_color": "#83BAF3"
+}

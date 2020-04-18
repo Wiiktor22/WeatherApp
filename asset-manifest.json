@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.js": "/WeatherApp/static/js/main.4bb45893.chunk.js",
+    "main.js.map": "/WeatherApp/static/js/main.4bb45893.chunk.js.map",
+    "runtime-main.js": "/WeatherApp/static/js/runtime-main.795e39ca.js",
+    "runtime-main.js.map": "/WeatherApp/static/js/runtime-main.795e39ca.js.map",
+    "static/js/2.fc357f68.chunk.js": "/WeatherApp/static/js/2.fc357f68.chunk.js",
+    "static/js/2.fc357f68.chunk.js.map": "/WeatherApp/static/js/2.fc357f68.chunk.js.map",
+    "index.html": "/WeatherApp/index.html",
+    "precache-manifest.a221ceb215ef6a72791d33664b00a457.js": "/WeatherApp/precache-manifest.a221ceb215ef6a72791d33664b00a457.js",
+    "service-worker.js": "/WeatherApp/service-worker.js",
+    "static/js/2.fc357f68.chunk.js.LICENSE.txt": "/WeatherApp/static/js/2.fc357f68.chunk.js.LICENSE.txt",
+    "static/media/clear-day.svg": "/WeatherApp/static/media/clear-day.18ae8b6a.svg",
+    "static/media/clear-night.svg": "/WeatherApp/static/media/clear-night.abd97416.svg",
+    "static/media/cloudy.svg": "/WeatherApp/static/media/cloudy.6dfb3b61.svg",
+    "static/media/fog.svg": "/WeatherApp/static/media/fog.57afbca9.svg",
+    "static/media/hail.svg": "/WeatherApp/static/media/hail.85b6d51b.svg",
+    "static/media/partly-cloudy-day.svg": "/WeatherApp/static/media/partly-cloudy-day.51461db4.svg",
+    "static/media/partly-cloudy-night.svg": "/WeatherApp/static/media/partly-cloudy-night.33e7fec5.svg",
+    "static/media/rain.svg": "/WeatherApp/static/media/rain.2cf3bb1c.svg",
+    "static/media/refresh.svg": "/WeatherApp/static/media/refresh.3a43d65a.svg",
+    "static/media/sleet.svg": "/WeatherApp/static/media/sleet.2be9bd0f.svg",
+    "static/media/snow.svg": "/WeatherApp/static/media/snow.74f45bc4.svg",
+    "static/media/thunderstorm.svg": "/WeatherApp/static/media/thunderstorm.d88b95fa.svg",
+    "static/media/wind.svg": "/WeatherApp/static/media/wind.e977faa6.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.795e39ca.js",
+    "static/js/2.fc357f68.chunk.js",
+    "static/js/main.4bb45893.chunk.js"
+  ]
+}
