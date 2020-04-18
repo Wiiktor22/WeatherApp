@@ -13,6 +13,9 @@ const Wrapper = styled.div`
     box-shadow: ${({ color }) => color === '#83baf3' ? '0 0 12px rgba(115,165,217,.8)' : '0 0 12px rgba(43,42,99,.8)'};
     margin-right: 4vw;
     padding: 0 2vw;
+    @media(min-width: 1536px) {
+        padding: 0 1vw;
+    }
 `;
 
 const Text = styled.p`

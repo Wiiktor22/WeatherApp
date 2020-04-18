@@ -16,6 +16,9 @@ const Wrapper = styled.div`
         display: none;
     }
     padding: 0 2vw;
+    @media(min-width: 1536px) {
+        overflow-y: scroll;
+    }
 `;
 
 const NextHourSection = ({ data }) => {
