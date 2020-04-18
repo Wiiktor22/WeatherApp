@@ -4,6 +4,7 @@ import BackIcon from './../../../assets/back.png';
 import TomorrowSection from '../../NextViewComponents/tomorrowSection/tomorrowSection';
 import DaySection from '../../NextViewComponents/daySection/DaySection';
 import { DataForNextSectionContext } from '../../../context/DataForNextSectionContext';
+import { Animation } from './../../elements/animationWrapper/Animation';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -24,11 +25,13 @@ const Next = props => {
 
     return ( 
         <Wrapper>
+            <Animation>
             <IconWrapper src={BackIcon} onClick={() => props.history.goBack()} />
             <TomorrowSection data={data[0]}/>
             {dataForDaySection.map((item, index) => (
-                <DaySection data={item} day={day + index + 2}/>
+                <DaySection data={item} day={day + index + 2} key={index}/>
             ))}
+            </Animation>
         </Wrapper>
     );
 }

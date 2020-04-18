@@ -9,6 +9,7 @@ import CurrentlyDetailSection from '../../MainViewComponents/currentlyDetailsSec
 import Loading from '../loading/Loading';
 import { geolocated } from "react-geolocated";
 import { DataForNextSectionContext } from '../../../context/DataForNextSectionContext';
+import { Animation } from './../../elements/animationWrapper/Animation';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -22,17 +23,6 @@ const TodaySection = styled.div`
     align-items: center;
     width: 100%;
     height: auto;
-`;
-
-const Animation = styled.div`
-    animation: .6s showOn ease-out;
-    @keyframes showOn {
-        from {
-            transform: scale(.7);
-        } to {
-            transform: scale(1);
-        }
-    }
 `;
 
 const Main = (props) => {

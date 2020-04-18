@@ -18,10 +18,17 @@ const GlobalStyle = createGlobalStyle`
     html {
         font-size: 10px;
         font-family: 'Montserrat', sans-serif;
+        height: 100%;
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
     }
 
     body {
         background-color: #83baf3;
+        height: 100%;
+        overflow: auto;
+        position: relative;
     }
 `;
 

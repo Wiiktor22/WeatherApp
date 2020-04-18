@@ -22,9 +22,9 @@ const InsideItem = styled.div`
     border: 4px solid #fff;
     opacity: 1;
     border-radius: 50%;
-    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;  
     :nth-of-type(2) {
-        animation-delay: -0.5s;
+        animation-delay: .5s;
     }
     @keyframes lds-ripple {
         0% {

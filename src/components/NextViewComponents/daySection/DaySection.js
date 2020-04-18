@@ -17,7 +17,6 @@ const Wrapper = styled.div`
 `;
 
 const Icon = styled.img`
-    margin-left: 8vw;
     height: 40px;
     width: 40px;
 `;
@@ -34,6 +33,7 @@ const Text = styled.p`
     ${({ margin }) => (
         margin && css`
             margin-left: 4vw;
+            width: 20px;
         `
     )}
 `;
