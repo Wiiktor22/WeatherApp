@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { defineBackgroundColor } from './elements/functions';
 
 const Container = styled.div`
     background-color: ${({ color }) => color};
@@ -7,18 +8,17 @@ const Container = styled.div`
     height: 100vh;
     width: 100%;
     padding: 2vh 5vw;
+    @media (min-width: 1024px) {
+        width: 70%;
+        margin: 0 auto;
+    }
+    @media (min-width: 1536px) {
+        width: 50%;
+        margin: 0 auto;
+    }
 `;
 
 const Wrapper = props => {
-    const date = new Date();
-    const defineBackgroundColor = () => {
-        if (date.getHours() >= 7 && date.getHours() <= 20) {
-            return '#83baf3';
-        } else {
-            return '#1E1D45';
-        }
-    }
-    
     return ( 
         <Container color={defineBackgroundColor()}>
             {props.children}

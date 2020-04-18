@@ -113,3 +113,12 @@ export const defineWindDirection = direction => {
         return 'N'
     }
 }
+
+export const defineBackgroundColor = () => {
+    const date = new Date();
+    if (date.getHours() >= 7 && date.getHours() <= 20) {
+        return '#83baf3';
+    } else {
+        return '#1E1D45';
+    }
+}

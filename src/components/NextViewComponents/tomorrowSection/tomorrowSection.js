@@ -1,13 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { defineDay, getIcon, defineWindDirection } from './../../elements/functions';
+import { defineDay, getIcon, defineWindDirection, defineBackgroundColor } from './../../elements/functions';
 
 const Wrapper = styled.div`
     position: relative;
     height: auto;
     width: 90%;
     margin: 2vh auto 5vh;
-    box-shadow: 0 0 12px rgba(115,165,217,.8);
+    box-shadow: ${({ color }) => color === '#83baf3' ? '0 0 12px rgba(115,165,217,.8)' : '0 0 12px rgba(43,42,99,.8)'};
     border-radius: 10px;
     padding: 2vh 4vw;
 `;
@@ -79,7 +79,7 @@ const TomorrowSection = ({ data }) => {
     
 
     return ( 
-        <Wrapper>
+        <Wrapper color={defineBackgroundColor()}>
             {console.log(data)}
             <TomorrowText small>jutro</TomorrowText>
             <TomorrowText>{defineDay(prepareDay())}</TomorrowText>

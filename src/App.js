@@ -7,6 +7,8 @@ import GeoLocationContextProvider from './context/GeoLocationContext';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Next from './components/views/next/Next';
 import DataForNextSectionProvider from './context/DataForNextSectionContext';
+import { defineBackgroundColor } from './components/elements/functions';
+import Footer from './components/footer/Footer';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -25,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-color: #83baf3;
+        background-color: ${({ color }) => color};
         height: 100%;
         overflow: auto;
         position: relative;
@@ -35,7 +37,7 @@ const GlobalStyle = createGlobalStyle`
 const App = () => {
     return (
         <BrowserRouter> 
-            <GlobalStyle />
+            <GlobalStyle color={defineBackgroundColor()}/>
             <Wrapper>
                 <Header />
                 <GeoLocationContextProvider>
@@ -46,6 +48,7 @@ const App = () => {
                         </Switch>
                     </DataForNextSectionProvider>
                 </GeoLocationContextProvider>
+                <Footer />
             </Wrapper>
         </BrowserRouter>
     );

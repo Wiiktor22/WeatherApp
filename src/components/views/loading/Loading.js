@@ -19,12 +19,12 @@ const Item = styled.div`
 
 const InsideItem = styled.div`
     position: absolute;
+    opacity: 0;
     border: 4px solid #fff;
-    opacity: 1;
     border-radius: 50%;
-    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;  
+    animation: lds-ripple 2s ease-in-out infinite;  
     :nth-of-type(2) {
-        animation-delay: .5s;
+        animation-delay: 1s;
     }
     @keyframes lds-ripple {
         0% {
@@ -32,14 +32,14 @@ const InsideItem = styled.div`
             left: 36px;
             width: 0;
             height: 0;
-            opacity: 1;
+            opacity: 0;
         }
         100% {
             top: 0px;
             left: 0px;
             width: 72px;
             height: 72px;
-            opacity: 0;
+            opacity: 1;
         }
     }
 `;
