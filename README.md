@@ -1,4 +1,4 @@
-# Pogoda :partly_sunny:
+# WeatherApp :partly_sunny:
 
 #### Screenshot :camera:
 <p align="center">
