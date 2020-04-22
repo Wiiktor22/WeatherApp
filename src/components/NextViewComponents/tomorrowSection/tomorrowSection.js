@@ -37,7 +37,7 @@ const TomorrowText = styled.p`
 const TomorrowIcon = styled.img`
     position: absolute;
     top: 1vh;
-    left: 25vw;
+    right: 35vw;
     height: 50px;
     width: 50px;
 `;
@@ -80,7 +80,6 @@ const TomorrowSection = ({ data }) => {
 
     return ( 
         <Wrapper color={defineBackgroundColor()}>
-            {console.log(data)}
             <TomorrowText small>jutro</TomorrowText>
             <TomorrowText>{defineDay(prepareDay())}</TomorrowText>
             <TomorrowIcon src={getIcon(data.icon)}/>
@@ -97,7 +96,7 @@ const TomorrowSection = ({ data }) => {
                 </Detail>
                 <Detail>
                     <TomorrowText small>Ciśnienie</TomorrowText>
-                    <TomorrowText>{data.pressure} hPa</TomorrowText>
+                    <TomorrowText>{Math.round(data.pressure)} hPa</TomorrowText>
                 </Detail>
                 <Detail>
                     <TomorrowText small>Kierunek</TomorrowText>

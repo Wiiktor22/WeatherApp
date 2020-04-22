@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
 
 const App = () => {
     return (
-        <BrowserRouter> 
+        <BrowserRouter basename={process.env.PUBLIC_URL}> 
             <GlobalStyle color={defineBackgroundColor()}/>
             <Wrapper>
                 <Header />

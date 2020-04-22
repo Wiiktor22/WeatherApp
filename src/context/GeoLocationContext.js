@@ -8,6 +8,13 @@ class GeoLocationContextProvider extends React.Component {
         lat: '0',
         long: '0'
     }
+
+    componentDidUpdate() {
+        if (this.state.lat === '0') {
+            this.getCurrentLocation();
+        }
+    }
+
     getCurrentLocation = () => {
         if (this.props.coords !== null) {
             this.setState({
@@ -21,7 +28,6 @@ class GeoLocationContextProvider extends React.Component {
         return (
             <GeoLocationContext.Provider value={{...this.state, getLocation: this.getCurrentLocation}}>
                 {this.props.children}
-                {console.log(this.state)}
             </GeoLocationContext.Provider>
         )
     }

@@ -33,7 +33,7 @@ const CurrentlyDetailSection = ({ data }) => {
         <Wrapper>
             <Information>
                 <Text>Wilgotność</Text>
-                <Text info>{data.humidity * 100}%</Text>
+                <Text info>{Math.round(data.humidity * 100)}%</Text>
             </Information>
             <Information>
                 <Text>Ciśnienie</Text>
@@ -49,7 +49,7 @@ const CurrentlyDetailSection = ({ data }) => {
             </Information>
             <Information>
                 <Text>Możliwe opady</Text>
-                <Text info>{data.precipProbability * 100}%</Text>
+                <Text info>{Math.round(data.precipProbability * 100)}%</Text>
             </Information>
             <Information>
                 <Text>Pokrycie chmur</Text>

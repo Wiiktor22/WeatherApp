@@ -1,7 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
-import Burger from '../elements/burger/Burger';
+import styled, { css } from 'styled-components';
 import Refresh from './../../assets/refresh.svg';
+import BackIcon from './../../assets/back.png';
+import { useLocation, useHistory } from 'react-router-dom';
 
 const Wrapper = styled.header`
     position: relative;
@@ -26,14 +27,34 @@ const RefreshIcon = styled.img`
     transform: translateY(-50%);
     height: 20px;
     width: 20px;
+
+    ${({ left }) => (
+        left && css`
+            light: 0;
+            right: auto;
+        `
+    )}
 `;
 
 const Header = () => {
+    let location = useLocation();
+    let history = useHistory();
+    const handleRefresh = () => {
+        switch (location.pathname) {
+            case '/': 
+                return window.location.reload()
+            case '/nextweek':
+                return history.push('/')
+            default:
+                return
+        }
+    }
+    
     return ( 
         <Wrapper>
-            <Burger />
+            {location.pathname === '/nextweek' && <RefreshIcon left src={BackIcon} onClick={() => history.push('/')}/>}
             <Title>Pogoda</Title>
-            <RefreshIcon src={Refresh} onClick={() => window.location.reload()}/>
+            <RefreshIcon src={Refresh} onClick={handleRefresh}/>
         </Wrapper>
     );
 }

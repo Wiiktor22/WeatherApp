@@ -26,11 +26,10 @@ const TodaySection = styled.div`
 `;
 
 const Main = (props) => {
-    const { lat, long, getLocation } = useContext(GeoLocationContext);
+    const { lat, long } = useContext(GeoLocationContext);
     const { getData } = useContext(DataForNextSectionContext);
     const [data, setData] = useState('');
-    const [updateLocation, setUpdateLocation] = useState(false);
-
+    
     useEffect(() => {
         if (lat !== '0') {
             async function fetchData() {
@@ -42,23 +41,13 @@ const Main = (props) => {
             }
             fetchData();
         }
-    }, [lat, long, updateLocation])
+    }, [lat, long])
 
     const prepareDataForNHS = () => {
         const preparedData = data.hourly.data;
         preparedData.length = 8;
         return preparedData
     }
-
-    //Download current Location
-    const checkForUpdateLocation = () => {
-        if (props.coords !== null && updateLocation === false) {
-            setUpdateLocation(true);
-        }
-    }
-    useEffect(() => {
-        if (updateLocation) getLocation();
-    }, [updateLocation])
 
     //Send data to Context for NextSection
     useEffect(() => {
@@ -69,10 +58,8 @@ const Main = (props) => {
         }
     }, [data])
 
-
     return ( 
         <Wrapper>
-            {updateLocation === false && checkForUpdateLocation()}
             {data ? (
                 <Animation>
                     <TodaySection>
